@@ -1,9 +1,6 @@
 package com.john.models;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "clients")
@@ -17,6 +14,9 @@ public class Client {
     private int id;
     private String name;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id",unique = true,nullable = false)
     public int getId() {
         return id;
     }
@@ -25,6 +25,8 @@ public class Client {
         this.id = id;
     }
 
+    @Basic
+    @Column(name = "name",nullable = false,length = 100)
     public String getName() {
         return name;
     }
